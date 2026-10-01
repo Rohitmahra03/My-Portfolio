@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heera Lal Mahra | Portfolio</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      font-family: Arial, sans-serif;
+    }
+
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --primary: #38bdf8;
+      --primary-dark: #0284c7;
+    }
+
+    body.light {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      transition: 0.3s;
+    }
+
+    /* Navbar */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(15, 23, 42, 0.95);
+      padding: 18px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: var(--primary);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: var(--primary);
+    }
+
+    .theme-btn {
+      background: var(--primary);
+      border: none;
+      padding: 8px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-left: 15px;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 100px 20px 40px;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(40px, 7vw, 75px);
+      margin-bottom: 15px;
+    }
+
+    .hero-content h1 span {
+      color: var(--primary);
+    }
+
+    .hero-content h2 {
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .hero-content p {
+      max-width: 650px;
+      margin: auto;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 18px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 13px 25px;
+      background: var(--primary);
+      color: #00111a;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: var(--primary-dark);
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    /* Sections */
+    section {
+      padding: 90px 8%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 45px;
+      font-size: 35px;
+    }
+
+    .section-title span {
+      color: var(--primary);
+    }
+
+    /* About */
+    .about {
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .about p {
+      color: var(--muted);
+      line-height: 1.9;
+      font-size: 17px;
+    }
+
+    /* Info Cards */
+    .info-grid {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .info-card {
+      background: var(--card);
+      padding: 25px;
+      border-radius: 15px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .info-card:hover {
+      transform: translateY(-7px);
+    }
+
+    .info-card h3 {
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .info-card p {
+      color: var(--muted);
+    }
+
+    /* Skills */
+    .skills-container {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .skill {
+      margin-bottom: 25px;
+    }
+
+    .skill-title {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .skill-title span:last-child {
+      color: var(--primary);
+    }
+
+    .skill-bar {
+      height: 10px;
+      background: #334155;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .skill-progress {
+      height: 100%;
+      background: var(--primary);
+      border-radius: 10px;
+    }
+
+    .problem {
+      width: 85%;
+    }
+
+    .teamwork {
+      width: 80%;
+    }
+
+    .web {
+      width: 75%;
+    }
+
+    /* Projects */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+
+    .project-card {
+      background: var(--card);
+      padding: 30px;
+      border-radius: 15px;
+      transition: 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .project-card h3 {
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+
+    .project-card p {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .project-link {
+      display: inline-block;
+      margin-top: 20px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .project-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Goal */
+    .goal {
+      text-align: center;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .goal-box {
+      background: var(--card);
+      padding: 40px;
+      border-radius: 18px;
+    }
+
+    .goal-box h3 {
+      font-size: 28px;
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+
+    .goal-box p {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    /* Contact */
+    .contact {
+      text-align: center;
+    }
+
+    .email {
+      display: inline-block;
+      margin-top: 20px;
+      color: var(--primary);
+      font-size: 20px;
+      text-decoration: none;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: #020617;
+      color: #94a3b8;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+
+      nav {
+        padding: 15px 5%;
+      }
+
+      nav ul {
+        display: none;
+        position: absolute;
+        top: 65px;
+        left: 0;
+        width: 100%;
+        background: #0f172a;
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+      }
+
+      nav ul.active {
+        display: flex;
+      }
+
+      .menu-btn {
+        display: block;
+        background: var(--primary);
+        border: none;
+        padding: 8px 12px;
+        border-radius: 7px;
+        cursor: pointer;
+      }
+
+      .info-grid,
+      .projects {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 70px 5%;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .menu-btn {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">Heera Lal</div>
+
+    <ul id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#goal">Goal</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <button class="theme-btn" onclick="toggleTheme()">🌙</button>
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+  </nav>
+
+
+  <!-- Home -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+
+      <h1>Hello, I'm <span>Heera Lal Mahra</span></h1>
+
+      <h2>Student | Web Development Enthusiast</h2>
+
+      <p>
+        I am a Class 11th PCM student interested in Web Development,
+        Reading, Problem Solving and Teamwork.
+      </p>
+
+      <a href="#about" class="btn">Explore My Portfolio</a>
+
+    </div>
+  </section>
+
+
+  <!-- About -->
+  <section id="about">
+
+    <h2 class="section-title">About <span>Me</span></h2>
+
+    <div class="about">
+
+      <p>
+        Hello! My name is <strong>Heera Lal Mahra</strong>.
+        I am a student currently studying in Class 11th with PCM.
+        I have a strong interest in Web Development and Reading.
+        I enjoy learning new technologies and creating websites.
+        My key strengths are Problem Solving and Teamwork.
+        My goal is to become a Data Scientist in the future.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- Education -->
+  <section id="education">
+
+    <h2 class="section-title">My <span>Education</span></h2>
+
+    <div class="info-grid">
+
+      <div class="info-card">
+        <h3>Current Education</h3>
+        <p>Class 11th</p>
+      </div>
+
+      <div class="info-card">
+        <h3>Stream</h3>
+        <p>PCM — Physics, Chemistry & Mathematics</p>
+      </div>
+
+      <div class="info-card">
+        <h3>Career Interest</h3>
+        <p>Data Science & Technology</p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- Skills -->
+  <section id="skills">
+
+    <h2 class="section-title">My <span>Skills</span></h2>
+
+    <div class="skills-container">
+
+      <div class="skill">
+
+        <div class="skill-title">
+          <span>Problem Solving</span>
+          <span>85%</span>
+        </div>
+
+        <div class="skill-bar">
+          <div class="skill-progress problem"></div>
+        </div>
+
+      </div>
+
+
+      <div class="skill">
+
+        <div class="skill-title">
+          <span>Teamwork</span>
+          <span>80%</span>
+        </div>
+
+        <div class="skill-bar">
+          <div class="skill-progress teamwork"></div>
+        </div>
+
+      </div>
+
+
+      <div class="skill">
+
+        <div class="skill-title">
+          <span>Web Development</span>
+          <span>75%</span>
+        </div>
+
+        <div class="skill-bar">
+          <div class="skill-progress web"></div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- Projects -->
+  <section id="projects">
+
+    <h2 class="section-title">My <span>Projects</span></h2>
+
+    <div class="projects">
+
+      <div class="project-card">
+
+        <h3>Local Market Website</h3>
+
+        <p>
+          A website project created to provide information
+          and services related to a local market.
+        </p>
+
+        <a
+          href="https://rohitmahra03.github.io/Local-Market-/"
+          target="_blank"
+          class="project-link">
+          Visit Website →
+        </a>
+
+      </div>
+
+
+      <div class="project-card">
+
+        <h3>Restaurant Website</h3>
+
+        <p>
+          A restaurant website project designed to present
+          restaurant information and its offerings.
+        </p>
+
+        <a
+          href="https://rohitmahra03.github.io/restaurant/"
+          target="_blank"
+          class="project-link">
+          Visit Website →
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- Goal -->
+  <section id="goal">
+
+    <h2 class="section-title">My <span>Goal</span></h2>
+
+    <div class="goal">
+
+      <div class="goal-box">
+
+        <h3>Become a Data Scientist</h3>
+
+        <p>
+          My goal is to become a Data Scientist.
+          I want to develop my knowledge of programming,
+          mathematics, data analysis and technology and
+          use these skills to solve real-world problems.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- Contact -->
+  <section id="contact">
+
+    <h2 class="section-title">Contact <span>Me</span></h2>
+
+    <div class="contact">
+
+      <p>
+        If you want to connect with me, feel free to contact me through email.
+      </p>
+
+      <a
+        href="mailto:rohitmahra@07310gmail.com"
+        class="email">
+        rohitmahra@07310gmail.com
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- Footer -->
+  <footer>
+
+    <p>
+      © 2026 Heera Lal Mahra. All Rights Reserved.
+    </p>
+
+  </footer>
+
+
+  <script>
+
+    // Dark / Light Mode
+    function toggleTheme() {
+      document.body.classList.toggle("light");
+
+      const button = document.querySelector(".theme-btn");
+
+      if (document.body.classList.contains("light")) {
+        button.textContent = "☀️";
+      } else {
+        button.textContent = "🌙";
+      }
+    }
+
+
+    // Mobile Menu
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("active");
+    }
+
+
+    // Close mobile menu after clicking a link
+    document.querySelectorAll("#navLinks a").forEach(link => {
+
+      link.addEventListener("click", () => {
+
+        document
+          .getElementById("navLinks")
+          .classList.remove("active");
+
+      });
+
+    });
+
+  </script>
+
+</body>
+</html>
